@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  if(isset($_SESSION['unique_id'])){
+  if(isset($_SESSION['UserID'])){
     header("location: users.php");
   }
 ?>
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/SignUpPage.css">
   <div class="wrapper">
     <section class="form signup">
-      <header>match-it!</header>
+      <header>Match-It!</header>
       <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="error-text"></div>
         <div class="name-details">
