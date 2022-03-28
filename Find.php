@@ -4,59 +4,45 @@ include_once "php/config.php";
 if(!isset($_SESSION['unique_id'])){
     header("location: LoginPage.php");
 }
+$sql = mysqli_query($conn, "SELECT * FROM profiletable WHERE unique_id =  {$_SESSION['unique_id']}");
+if(!mysqli_num_rows($sql) > 0){
+    header("location: EditProfile.php");
+}
+
 ?>
 <?php include_once "header.php"; ?>
-<html>
-<head>
-    <link rel="stylesheet" href="css/Template.css">
-    <script src="https://kit.fontawesome.com/b17df002ae.js" crossorigin="anonymous"></script>
-</head>
 <body>
+<link rel="stylesheet" href="css/style.css">
 <div class="wrapper">
-    <header>
-        <?php
-        $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
-        if(mysqli_num_rows($sql) > 0){
-            $row = mysqli_fetch_assoc($sql);
-        }
-        ?>
-        <div class="header metrics button">
-            <a href="Metrics.php" title="User Metrics"> <i class="fa-solid fa-rocket"></i> </a>
-        </div>
-        <div class="header chat button">
-            <a href="users.php" title="Chat"> <i class="fa-solid fa-comments"></i> </a>
-        </div>
-        <div class="header search button">
-            <a href="Find.php" title="Find Someone"<i class="fa-solid fa-magnifying-glass"></i> </a>
-        </div>
-        <div class="header logo">
-            <a href="Welcome.php">
-                <img src="css/images/title.png">
-                <img src="css/images/titlealt.png" class="hover">
-            </a>
-        </div>
-        <div class="header notifications">
-            <a href="Notifications.php" title="Notifications"> <i class="fa-solid fa-bell"></i> </a>
-        </div>
-        <div class="header profilepicture">
-            <a href="Profile.php"> <img src="php/images/<?php echo $row['img']; ?>" alt=""> </a>
-        </div>
-    </header>
-    <hr>
-    <div class="profile columns">
-            <div class="find">
-                <p><a href="https://pr.to/E7VGQF/?ap=3">"Find" Page Prototype Here</a></p>
+    <section class="users">
+        <header>
+            <div class="content">
+                <?php
+                $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+                if(mysqli_num_rows($sql) > 0){
+                    $row = mysqli_fetch_assoc($sql);
+                }
+                ?>
+                <a href="Profile.php"><img src="php/images/<?php echo $row['img']; ?>" alt=""> </a>
+                <div class="details">
+                    <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
+                    <p><?php echo $row['status']; ?></p>
+                </div>
             </div>
-    </div>
-    <hr>
-    <footer>
-        <div class="footer logo">
-            <a href="Welcome.php"> <img src="css/images/logo.png" alt="Logo"> </a>
+            <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Logout</a>
+        </header>
+        <div class="search">
+            <span class="text">Select an user to start chat</span>
+            <input type="text" placeholder="Enter name to search...">
+            <button><i class="fas fa-search"></i></button>
         </div>
-    </footer>
+        <div class="users-list">
+
+        </div>
+    </section>
 </div>
 
-<script src="javascript/users.js"></script>
+<script src="JavaScript/OutMatch.js"></script>
 
 </body>
 </html>
