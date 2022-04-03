@@ -41,6 +41,10 @@ if(!isset($_SESSION['unique_id'])){
         <header><a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>Match-It!</header>
         <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
             <div class="error-text"></div>
+            <div class="field profileimage">
+                <label>Edit Profile Picture</label>
+                <input type="file" name="ProfileImage" accept="image/x-png,image/gif,image/jpeg,image/jpg">
+            </div>
             <div class="name-details">
                 <div class="field input">
                     <label>Age</label>
@@ -64,6 +68,18 @@ if(!isset($_SESSION['unique_id'])){
                 <label>Location</label>
                 <input type="text" name="Location" placeholder="Enter your location!" value=<?php echo $userLocation ?>>
                 <i class="fas fa-eye"></i>
+            </div>
+            <div class="field image1">
+                <label>Gallery Image #1</label>
+                <input type="file" name="GalleryPicture1" accept="image/x-png,image/gif,image/jpeg,image/jpg">
+            </div>
+            <div class="field image2">
+                <label>Gallery Image #2</label>
+                <input type="file" name="GalleryPicture2" accept="image/x-png,image/gif,image/jpeg,image/jpg">
+            </div>
+            <div class="field image3">
+                <label>Gallery Image #3</label>
+                <input type="file" name="GalleryPicture3" accept="image/x-png,image/gif,image/jpeg,image/jpg">
             </div>
             <div class="field button">
                 <input type="submit" name="submit" value="Update your Profile!" href="Profile.php">
