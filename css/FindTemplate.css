@@ -40,10 +40,9 @@ header .button a:hover{
 }
 header .logo{
     margin-top: 20px;
-    margin-left: auto;
+    margin-left: 29.5%;
     width: 250px;
     height: 50px;
-    margin-right: 3.5%;
     position: relative;
 }
 header .logo .hover{
@@ -59,8 +58,56 @@ header .logo:hover .hover{
 header .logo img{
     width: 250px;
 }
-header .notifications{
+header .search{
     margin-left: auto;
+    margin-top: 50px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+header .search .text{
+    font-size: 18px;
+}
+header .search input{
+    position: absolute;
+    height: 42px;
+    width: calc(100% - 50px);
+    font-size: 16px;
+    padding: 0 13px;
+    border: 1px solid #e6e6e6;
+    outline: none;
+    border-radius: 5px 0 0 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+header .search input.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+header .search button{
+    position: relative;
+    z-index: 1;
+    width: 47px;
+    height: 42px;
+    font-size: 17px;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+    color: #333;
+    outline: none;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.2s ease;
+}
+header .search button.active{
+    background: #333;
+    color: #fff;
+}
+.search button.active i::before{
+    content: '\f00d';
+}
+header .notifications{
     padding: 20px;
     border: none;
     background: none;
@@ -91,21 +138,21 @@ header .profilepicture img:hover{
     border: 3px solid #666F80;
 }
 .columns{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    padding-left: 5px;
-    padding-right: 5px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 9fr;
-    gap:10px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding: 30px;
+    background-color: #C3C8D3;
+    position: relative;
+    display: flex;
+    border-radius: 10px;
 }
 .col1{
-    grid-row-start: 1;
-    grid-row-end: span 2;
-    grid-column-start: 1;
+    position: relative;
+    height: 80vh;
+    width: 40vw;
+    align-items: center;
     background-image: linear-gradient(#8F85D1, #7E75B7);
-    border-radius: 25px;
+    border-radius: 10px;
 }
 .picture{
     margin-left: auto;
@@ -123,6 +170,7 @@ header .profilepicture img:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid black;
     background: #fff;
     padding: 5px;
     gap: 10px;
@@ -170,34 +218,34 @@ header .profilepicture img:hover{
     border-radius: 10px;
 }
 .bioheader{
-    grid-column-start: 2;
-    font-size: x-large;
-    color: #666F80;
     text-align: center;
-    position: relative;
+    font-size: 30px;
 }
 .bio{
-    grid-row-start: 2;
-    grid-column-start: 2;
-    height: 80vh;
-}
-.bio p{
-    border-radius: 25px;
-    padding: 25px;
+    border-radius: 5px;
     text-align: center;
-    background: #C3C8D3;
+    align-self: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 80%;
+    width: 25vw;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid black;
 }
 .about::-webkit-scrollbar{
     width: 0px;
 }
 .col3{
-    grid-row-start: 1;
-    grid-row-end: span 2;
-    grid-column-start: 3;
-    padding:  50px 25px 50px ;
-    align-content: center;
-    border-radius: 25px;
-    background: #8379c0 ;
+    position: relative;
+    height: 80vh;
+    width: 35vw;
+    background-image: linear-gradient(#8F85D1, #7E75B7);
+    border-radius: 10px;
 }
 .gallery{
     align-content: center;
@@ -210,10 +258,12 @@ header .profilepicture img:hover{
     object-fit: cover;
     width: 220px;
     height: 220px;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 25px;
-    display: flex;
+    border: 1px solid grey;
+    box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+    0 32px 64px -48px rgba(0,0,0,0.5);
 }
 .wrapper footer{
     margin-top: 10px;
