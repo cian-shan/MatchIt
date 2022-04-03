@@ -33,6 +33,15 @@ if(!empty($fname) && !empty($lname) && !empty($email) && !empty($password)){
                                 VALUES ({$ran_id}, '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
                             $insert_query2 = mysqli_query($conn, "INSERT INTO profiletable (unique_id)
                                 VALUES ('{$ran_id}')");
+                            $insert_query2 = mysqli_query($conn, "INSERT INTO locationinformation (unique_id)
+                                VALUES ('{$ran_id}')");
+                            $insert_query2 = mysqli_query($conn, "INSERT INTO hobbiestable (unique_id)
+                                VALUES ('{$ran_id}')");
+                            $insert_query2 = mysqli_query($conn, "INSERT INTO gallerypicturestable (unique_id)
+                                VALUES ('{$ran_id}')");
+                            $insert_query2 = mysqli_query($conn, "INSERT INTO abouttable (unique_id)
+                                VALUES ('{$ran_id}')");
+
                             if($insert_query){
                                 $select_sql2 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
                                 if(mysqli_num_rows($select_sql2) > 0){

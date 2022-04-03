@@ -7,7 +7,7 @@ $sql = "SELECT * FROM users u  JOIN matchingtable m ON u.unique_id=m.UserA_ID WH
 $query = mysqli_query($conn, $sql);
 $output = "";
 if(mysqli_num_rows($query) == 0){
-    $output .= "No incoming match request";
+    $output .= "No match requests";
 }elseif(mysqli_num_rows($query) > 0){
     include_once "InMatchData.php";
 }

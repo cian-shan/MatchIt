@@ -12,7 +12,7 @@ if(isset($_SESSION['unique_id'])){
             header("location: ../LoginPage.php");
         }
     }else{
-        header("location: ../users.php");
+        header("location: ../Profile.php");
     }
 }else{
     header("location: ../LoginPage.php");
