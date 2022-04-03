@@ -1,6 +1,7 @@
 const searchBar = document.querySelector(".search input"),
     searchIcon = document.querySelector(".search button"),
-    usersList = document.querySelector(".users-list");
+    usersList = document.querySelector(".users-list"),
+    findTable = document.querySelector(".find-list");
 
 searchIcon.onclick = ()=>{
   searchBar.classList.toggle("show");
@@ -20,12 +21,12 @@ searchBar.onkeyup = ()=>{
     searchBar.classList.remove("active");
   }
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "php/search.php", true);
+  xhr.open("POST", "php/findusersearch.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
       if(xhr.status === 200){
         let data = xhr.response;
-        usersList.innerHTML = data;
+        findTable.innerHTML = data;
       }
     }
   }
@@ -35,17 +36,14 @@ searchBar.onkeyup = ()=>{
 
 setTimeout(() =>{
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "php/users.php", true);
+  xhr.open("GET", "php/findusers.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
       if(xhr.status === 200){
         let data = xhr.response;
-        if(!searchBar.classList.contains("active")){
-          usersList.innerHTML = data;
-        }
+        findTable.innerHTML += data;
       }
     }
   }
   xhr.send();
 });
-
